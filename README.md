@@ -15,7 +15,7 @@ npm install
 ```
 npm start
 ```
-Acesse http://localhost/ no navegador
+Acesse http://localhost:8080/ no navegador
 
 ## Parando o container
 ```
