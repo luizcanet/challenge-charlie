@@ -1,0 +1,27 @@
+{
+  "name": "challenge-charlie",
+  "version": "1.0.0",
+  "description": "Construa um microsite responsivo em SPA (_single-page application_) para mostrar a previsão do tempo em determinadas cidades. Basicamente dois estagios: A página de entrada e depois quando alguma localidade é informada.",
+  "main": "index.js",
+  "scripts": {
+    "install": "docker build -t challenge-charlie . && docker container create --name challenge-charlie -p 8080:80 -v $(pwd)/web:/usr/share/nginx/html challenge-charlie && exit 0",
+    "start": "docker container start challenge-charlie && exit 0",
+    "stop": "docker container stop challenge-charlie && exit 0",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luizcanet/challenge-charlie.git"
+  },
+  "author": "Luiz Henrique Canet Filho <me@luizca.net>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/luizcanet/challenge-charlie/issues"
+  },
+  "homepage": "https://github.com/luizcanet/challenge-charlie#readme",
+  "devDependencies": {
+    "grunt": "^1.0.3",
+    "grunt-contrib-less": "^2.0.0",
+    "grunt-contrib-watch": "^1.1.0"
+  }
+}
