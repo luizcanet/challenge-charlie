@@ -7,7 +7,7 @@ html {
   font-family: sans-serif;
 }
 body {
-  background: #ccc url('../images/background.jpg') no-repeat center center;
+  background: #ccc no-repeat center center;
   background-size: cover;
   margin: 0;
 }

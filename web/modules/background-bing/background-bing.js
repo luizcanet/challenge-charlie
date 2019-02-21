@@ -1,8 +1,15 @@
 /* global Worker */
-const basePath = '/modules/background-bing'
-const service = new Worker(basePath + '/background-bing.service.js')
+let basePath = '/modules/background-bing'
+let service = new Worker(basePath + '/background-bing.service.js')
 
-service.onmessage = function (e) {
-  console.log(e)
+service.addEventListener('message', msg => {
+  if (msg.data.status === 'dataLoaded') {
+    document.body.style.backgroundImage = `url("${msg.data.imageUrl}")`
+  }
+
+  if (msg.data.status === 'serviceError') {
+    document.body.style.backgroundImage = 'url("/images/background.jpg")'
+  }
+
   service.terminate()
-}
+})

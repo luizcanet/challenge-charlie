@@ -1,6 +1,21 @@
-/* global fetch */
-fetch('https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=pt-BR')
+/* global fetch, postMessage */
+let msg = {}
+
+fetch('/background-image')
   .then(response => {
-    console.log(response)
+    if (response.ok) {
+      response.json().then(data => {
+        let bingDomain = 'https://www.bing.com'
+        msg.status = 'dataLoaded'
+        msg.imageUrl = bingDomain + data.images.shift().url
+        postMessage(msg)
+      })
+    } else {
+      throw new Error(response.statusText)
+    }
   })
-  .catch(err => console.log(err))
+  .catch(err => {
+    msg.status = 'serviceError'
+    msg.errorMessage = err.message
+    postMessage(msg)
+  })
